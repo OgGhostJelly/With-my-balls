@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://0bbitaij4vis"]
+
+[ext_resource type="Script" path="res://classes/Shape.gd" id="1_bbd0q"]
+[ext_resource type="Texture2D" uid="uid://dxl37snfsw685" path="res://objects/shape/circle/circle.svg" id="2_8n3sl"]
+[ext_resource type="Script" path="res://classes/PhysicsJointDraggable.gd" id="3_k7ock"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egqti"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5s75"]
+radius = 60.0
+
+[node name="Circle" type="RigidBody2D"]
+script = ExtResource("1_bbd0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_egqti")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8n3sl")
+
+[node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("object")]
+visible = false
+script = ExtResource("3_k7ock")
+object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+visible = false
+shape = SubResource("CircleShape2D_a5s75")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+rect = Rect2(-1250, -1250, 2500, 2500)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

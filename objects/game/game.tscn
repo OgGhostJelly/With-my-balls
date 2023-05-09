@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://gba1jt1gmn"]
+
+[ext_resource type="PackedScene" uid="uid://cgveqgadu0bl3" path="res://userinterfaces/game/game.tscn" id="1_rtr8x"]
+[ext_resource type="Script" path="res://classes/CleverCamera.gd" id="2_52r8t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qfm3s"]
+friction = 0.5
+
+[node name="Game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game" parent="CanvasLayer" instance=ExtResource("1_rtr8x")]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qfm3s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+polygon = PackedVector2Array(1, 277, 132, 503, 132, 503, 320, 581, 617, 597, 934, 584, 1131, 394, 1152, 228, 1156, 653, -2, 653)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Ground"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-6, 245, 142, 495, 176, 508, 325, 573, 620, 587, 931, 573, 1121, 390, 1149, 206, 1160, 254, 1169, 666, -15, 666, -13, 287)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+polygon = PackedVector2Array(1, 277, 132, 503, 132, 503, 320, 581, 617, 597, 934, 584, 1131, 394, 1152, 228, 1156, 653, -2, 653)
+
+[node name="CleverCamera" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_52r8t")

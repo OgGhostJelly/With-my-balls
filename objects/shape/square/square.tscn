@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://uexrlr4cdjl7"]
+
+[ext_resource type="Script" path="res://classes/Shape.gd" id="1_poimp"]
+[ext_resource type="Texture2D" uid="uid://ctymv0a2i75pr" path="res://objects/shape/square/square.svg" id="2_odw77"]
+[ext_resource type="Script" path="res://classes/PhysicsJointDraggable.gd" id="3_ev6ri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acvwp"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5s75"]
+radius = 60.0
+
+[node name="Square" type="RigidBody2D"]
+script = ExtResource("1_poimp")
+colors = Array[Color]([Color(1, 0, 0, 1), Color(1, 0.490196, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1), Color(0, 1, 1, 1), Color(1, 0, 1, 1)])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_acvwp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_odw77")
+
+[node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("3_ev6ri")
+object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+shape = SubResource("CircleShape2D_a5s75")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-1250, -1250, 2500, 2500)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

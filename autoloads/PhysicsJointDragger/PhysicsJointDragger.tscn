@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwmk3x8rh8kna"]
+
+[ext_resource type="Script" path="res://autoloads/PhysicsJointDragger/PhysicsJointDragger.gd" id="1_8c4ql"]
+
+[node name="PhysicsJointDragger" type="Node"]
+script = ExtResource("1_8c4ql")
+
+[node name="Mouse" type="StaticBody2D" parent="."]
+
+[node name="Joint" type="PinJoint2D" parent="Mouse"]
+node_a = NodePath("..")
+softness = 16.0

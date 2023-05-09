@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnvmm2tci3fry"]
+
+[ext_resource type="Script" path="res://classes/Shape.gd" id="1_t8nus"]
+[ext_resource type="Texture2D" uid="uid://bjqiwl6b4ew4o" path="res://objects/shape/triangle/triangle.svg" id="2_a5nmm"]
+[ext_resource type="Script" path="res://classes/PhysicsJointDraggable.gd" id="3_l2gww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5s75"]
+radius = 60.0
+
+[node name="Triangle" type="RigidBody2D"]
+script = ExtResource("1_t8nus")
+colors = Array[Color]([Color(1, 0, 0, 1), Color(1, 0.490196, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1), Color(0, 1, 1, 1), Color(1, 0, 1, 1)])
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32, 32, 32, 32, 0, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a5nmm")
+
+[node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("3_l2gww")
+object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+shape = SubResource("CircleShape2D_a5s75")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-1250, -1250, 2500, 2500)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

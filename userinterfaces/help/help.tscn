@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://mocd3xw0jm7v"]
+
+[ext_resource type="Texture2D" uid="uid://7a3x1twx0ncj" path="res://userinterfaces/help/help.svg" id="1_embch"]
+[ext_resource type="Script" path="res://userinterfaces/help/help.gd" id="1_v72qs"]
+[ext_resource type="Texture2D" uid="uid://c6kgbcl4w3qwh" path="res://userinterfaces/help/help_pressed.svg" id="2_1hj32"]
+[ext_resource type="Texture2D" uid="uid://crvkv77rdpckk" path="res://userinterfaces/help/help_hover.svg" id="3_j2mw5"]
+[ext_resource type="Texture2D" uid="uid://dd0xwnfh36y1" path="res://userinterfaces/game/move/drag.svg" id="5_p62m6"]
+[ext_resource type="Texture2D" uid="uid://cr22wuwrvonm7" path="res://userinterfaces/game/move/push.svg" id="6_mxeu1"]
+[ext_resource type="Texture2D" uid="uid://u36ampe8mtde" path="res://userinterfaces/game/move/pull.svg" id="7_5qy21"]
+[ext_resource type="Texture2D" uid="uid://deiovy4nf2d54" path="res://userinterfaces/game/place/circle.svg" id="8_v4088"]
+[ext_resource type="Texture2D" uid="uid://dpuvn61ny0t1l" path="res://userinterfaces/game/place/triangle.svg" id="9_818gp"]
+[ext_resource type="Texture2D" uid="uid://m8iftrsc2fg7" path="res://userinterfaces/game/place/square.svg" id="10_d4jil"]
+
+[node name="Help" type="TextureButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_embch")
+texture_pressed = ExtResource("2_1hj32")
+texture_hover = ExtResource("3_j2mw5")
+script = ExtResource("1_v72qs")
+
+[node name="Popup" type="Popup" parent="."]
+title = "HELP"
+size = Vector2i(484, 363)
+borderless = false
+
+[node name="Tutorial" type="VBoxContainer" parent="Popup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.5
+offset_top = -115.0
+offset_right = 174.5
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Popup/Tutorial"]
+layout_mode = 2
+text = "Place objects and interact with them!
+Select an action and press [LMB]
+
+WASD and ARROWS to pan the camera
+I,O or Q,E to zoom IN and OUT
+"
+horizontal_alignment = 1
+
+[node name="Actions" type="HBoxContainer" parent="Popup/Tutorial"]
+layout_mode = 2
+
+[node name="Move" type="VBoxContainer" parent="Popup/Tutorial/Actions"]
+layout_mode = 2
+
+[node name="Drag" type="HBoxContainer" parent="Popup/Tutorial/Actions/Move"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Move/Drag"]
+layout_mode = 2
+texture = ExtResource("5_p62m6")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Move/Drag"]
+layout_mode = 2
+text = "Drag Objects"
+
+[node name="Push" type="HBoxContainer" parent="Popup/Tutorial/Actions/Move"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Move/Push"]
+layout_mode = 2
+texture = ExtResource("6_mxeu1")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Move/Push"]
+layout_mode = 2
+text = "Push Objects"
+
+[node name="Pull" type="HBoxContainer" parent="Popup/Tutorial/Actions/Move"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Move/Pull"]
+layout_mode = 2
+texture = ExtResource("7_5qy21")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Move/Pull"]
+layout_mode = 2
+text = "Pull Objects"
+
+[node name="Place" type="VBoxContainer" parent="Popup/Tutorial/Actions"]
+layout_mode = 2
+
+[node name="Circle" type="HBoxContainer" parent="Popup/Tutorial/Actions/Place"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Place/Circle"]
+layout_mode = 2
+texture = ExtResource("8_v4088")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Place/Circle"]
+layout_mode = 2
+text = "Place Circle"
+
+[node name="Triangle" type="HBoxContainer" parent="Popup/Tutorial/Actions/Place"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Place/Triangle"]
+layout_mode = 2
+texture = ExtResource("9_818gp")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Place/Triangle"]
+layout_mode = 2
+text = "Place Triangle"
+
+[node name="Square" type="HBoxContainer" parent="Popup/Tutorial/Actions/Place"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Actions/Place/Square"]
+layout_mode = 2
+texture = ExtResource("10_d4jil")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Actions/Place/Square"]
+layout_mode = 2
+text = "Place Square"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

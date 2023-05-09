@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgveqgadu0bl3"]
+
+[ext_resource type="PackedScene" uid="uid://mocd3xw0jm7v" path="res://userinterfaces/help/help.tscn" id="2_6cuce"]
+[ext_resource type="Script" path="res://classes/PhysicsCursorStateButton.gd" id="2_26esm"]
+[ext_resource type="Texture2D" uid="uid://deiovy4nf2d54" path="res://userinterfaces/game/place/circle.svg" id="2_fra0x"]
+[ext_resource type="Texture2D" uid="uid://moinc5uk2g0i" path="res://userinterfaces/game/place/circle_selected.svg" id="2_pvw7j"]
+[ext_resource type="Texture2D" uid="uid://dpuvn61ny0t1l" path="res://userinterfaces/game/place/triangle.svg" id="4_hj68e"]
+[ext_resource type="Texture2D" uid="uid://m8iftrsc2fg7" path="res://userinterfaces/game/place/square.svg" id="5_wfx75"]
+[ext_resource type="Texture2D" uid="uid://dqkbs0x005sjk" path="res://userinterfaces/game/place/triangle_selected.svg" id="6_m4je1"]
+[ext_resource type="Texture2D" uid="uid://cd52q8kemde2v" path="res://userinterfaces/game/place/square_selected.svg" id="8_7pqu8"]
+[ext_resource type="Texture2D" uid="uid://dd0xwnfh36y1" path="res://userinterfaces/game/move/drag.svg" id="9_b2aa7"]
+[ext_resource type="Texture2D" uid="uid://tquab7jb2oej" path="res://userinterfaces/game/move/drag_selected.svg" id="10_pfxak"]
+[ext_resource type="Texture2D" uid="uid://cr22wuwrvonm7" path="res://userinterfaces/game/move/push.svg" id="11_tcg8i"]
+[ext_resource type="Texture2D" uid="uid://dan51o14u28dq" path="res://userinterfaces/game/move/push_selected.svg" id="12_0xnbj"]
+[ext_resource type="Texture2D" uid="uid://u36ampe8mtde" path="res://userinterfaces/game/move/pull.svg" id="13_k2xt7"]
+[ext_resource type="Texture2D" uid="uid://gbv7hs1x2wqu" path="res://userinterfaces/game/move/pull_selected.svg" id="13_pcvtq"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Help" parent="." instance=ExtResource("2_6cuce")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 74.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Place" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Circle" type="TextureButton" parent="VBoxContainer/Place"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_fra0x")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"place", &"circle"])
+selected = ExtResource("2_pvw7j")
+normal = ExtResource("2_fra0x")
+
+[node name="Triangle" type="TextureButton" parent="VBoxContainer/Place"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_hj68e")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"place", &"triangle"])
+selected = ExtResource("6_m4je1")
+normal = ExtResource("4_hj68e")
+
+[node name="Square" type="TextureButton" parent="VBoxContainer/Place"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_wfx75")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"place", &"square"])
+selected = ExtResource("8_7pqu8")
+normal = ExtResource("5_wfx75")
+
+[node name="Move" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Drag" type="TextureButton" parent="VBoxContainer/Move"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_b2aa7")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"move", &"drag"])
+selected = ExtResource("10_pfxak")
+normal = ExtResource("9_b2aa7")
+
+[node name="Push" type="TextureButton" parent="VBoxContainer/Move"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_tcg8i")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"move", &"push"])
+selected = ExtResource("12_0xnbj")
+normal = ExtResource("11_tcg8i")
+
+[node name="Pull" type="TextureButton" parent="VBoxContainer/Move"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_fra0x")
+script = ExtResource("2_26esm")
+state = Array[StringName]([&"move", &"pull"])
+selected = ExtResource("13_pcvtq")
+normal = ExtResource("13_k2xt7")
