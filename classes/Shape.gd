@@ -3,22 +3,36 @@ class_name Shape
 
 
 @export var colors: Array[Color] = [
-	Color(255, 0, 0),
-	Color(255, 125, 0),
-	Color(255, 255, 0),
-	Color(0, 255, 0),
-	Color(0, 0, 255),
-	Color(0, 255, 255),
-	Color(255, 0, 255)
+	Color(1, 0, 0),
+	Color(1, 0.5, 0),
+	Color(1, 1, 0),
+	Color(0, 1, 0),
+	Color(0.5, 1, 0),
+	Color(0, 0, 1),
+	Color(0, 0.5, 1),
+	Color(0.5, 0.5, 1),
+	Color(1, 0, 1),
+
+#	Color(1, 0, 0),
+#	Color(1, 0.5, 0),
+#	Color(1, 1, 0),
+#	Color(0, 1, 0),
+#	Color(0, 0, 1),
+#	Color(0, 1, 1),
+#	Color(1, 0, 1),
+#	Color(1, 1, 1),
 ]
 @onready var sprite: Sprite2D = $Sprite2D
 
 
 func _process(_delta: float) -> void:
-	pass
-	#sprite.rotation = -rotation
-	#sprite.modulate = colors[clamp(floor( abs( ( global_position.y - 550 ) / ( colors.size() * 22 ) ) ), 0, colors.size() - 1)]
-	#sprite.modulate = colors[fmod(floor(Time.get_ticks_msec() / 100), colors.size())]
+	var value: float = ( global_position.y - 550 )
+	var tindex: int = floor( abs( value / ( colors.size() * 5 ) ) )
+	var top: int = colors.size()
+	
+	var color_index: float = fmod(tindex, top)
+	
+	sprite.modulate = colors[color_index]
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

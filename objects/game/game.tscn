@@ -27,6 +27,7 @@ polygon = PackedVector2Array(1, 277, 132, 503, 132, 503, 320, 581, 617, 597, 934
 
 [node name="CleverCamera" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
+zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("2_52r8t")

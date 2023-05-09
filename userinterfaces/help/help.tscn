@@ -41,11 +41,11 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Popup/Tutorial"]
 layout_mode = 2
-text = "Place objects and interact with them!
-Select an action and press [LMB]
+text = "Play around with different shapes.
+Select an action (top-left) and left click to use
 
 WASD and ARROWS to pan the camera
-I,O or Q,E to zoom IN and OUT
+I,O or E,Q to zoom IN and OUT
 "
 horizontal_alignment = 1
 

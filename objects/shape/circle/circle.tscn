@@ -14,23 +14,19 @@ radius = 60.0
 script = ExtResource("1_bbd0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_egqti")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8n3sl")
 
 [node name="Draggable" type="Area2D" parent="." node_paths=PackedStringArray("object")]
-visible = false
 script = ExtResource("3_k7ock")
 object = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
-visible = false
 shape = SubResource("CircleShape2D_a5s75")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
 rect = Rect2(-1250, -1250, 2500, 2500)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
