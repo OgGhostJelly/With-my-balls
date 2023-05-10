@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgveqgadu0bl3"]
+[gd_scene load_steps=17 format=3 uid="uid://cgveqgadu0bl3"]
 
 [ext_resource type="PackedScene" uid="uid://mocd3xw0jm7v" path="res://userinterfaces/help/help.tscn" id="2_6cuce"]
 [ext_resource type="Script" path="res://classes/PhysicsCursorStateButton.gd" id="2_26esm"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dan51o14u28dq" path="res://userinterfaces/game/move/push_selected.svg" id="12_0xnbj"]
 [ext_resource type="Texture2D" uid="uid://u36ampe8mtde" path="res://userinterfaces/game/move/pull.svg" id="13_k2xt7"]
 [ext_resource type="Texture2D" uid="uid://gbv7hs1x2wqu" path="res://userinterfaces/game/move/pull_selected.svg" id="13_pcvtq"]
+[ext_resource type="Texture2D" uid="uid://cyjf5rqhgi3nv" path="res://userinterfaces/game/join/join_selected.svg" id="15_l57rw"]
+[ext_resource type="Texture2D" uid="uid://ytay2q7tm7rl" path="res://userinterfaces/game/join/join.svg" id="16_go8dy"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -48,7 +50,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_fra0x")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"place", &"circle"])
+state = "place_circle"
 selected = ExtResource("2_pvw7j")
 normal = ExtResource("2_fra0x")
 
@@ -57,7 +59,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_hj68e")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"place", &"triangle"])
+state = "place_triangle"
 selected = ExtResource("6_m4je1")
 normal = ExtResource("4_hj68e")
 
@@ -66,7 +68,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_wfx75")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"place", &"square"])
+state = "place_square"
 selected = ExtResource("8_7pqu8")
 normal = ExtResource("5_wfx75")
 
@@ -78,7 +80,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_b2aa7")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"move", &"drag"])
+state = "move_drag"
 selected = ExtResource("10_pfxak")
 normal = ExtResource("9_b2aa7")
 
@@ -87,7 +89,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_tcg8i")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"move", &"push"])
+state = "move_push"
 selected = ExtResource("12_0xnbj")
 normal = ExtResource("11_tcg8i")
 
@@ -96,6 +98,18 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_fra0x")
 script = ExtResource("2_26esm")
-state = Array[StringName]([&"move", &"pull"])
+state = "move_pull"
 selected = ExtResource("13_pcvtq")
 normal = ExtResource("13_k2xt7")
+
+[node name="Joint" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Join" type="TextureButton" parent="VBoxContainer/Joint"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_fra0x")
+script = ExtResource("2_26esm")
+state = "joint_join"
+selected = ExtResource("15_l57rw")
+normal = ExtResource("16_go8dy")

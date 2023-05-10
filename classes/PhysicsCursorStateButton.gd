@@ -2,7 +2,7 @@ extends TextureButton
 class_name PhysicsCursorStateButton
 
 
-@export var state: Array[StringName]
+@export var state: String
 @export var display_hover_on_select: bool = true
 @export var selected: Texture
 @export var normal: Texture
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func update_display() -> void:
-	var state_object = PhysicsCursor.states[state[0]][state[1]]
+	var state_object = PhysicsCursor.states[state]
 	
 	texture_normal = (
 		selected
@@ -27,4 +27,4 @@ func update_display() -> void:
 
 
 func _on_pressed() -> void:
-	PhysicsCursor.state = PhysicsCursor.states[state[0]][state[1]]
+	PhysicsCursor.state = PhysicsCursor.states[state]

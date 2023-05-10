@@ -7,25 +7,25 @@ signal state_changed
 	circle = preload("res://objects/shape/circle/circle.tscn"),
 	square = preload("res://objects/shape/square/square.tscn"),
 	triangle = preload("res://objects/shape/triangle/triangle.tscn"),
-}
-
-
-var states:  = {
-	place = {
-		circle = place.bind(scenes.circle),
-		square = place.bind(scenes.square),
-		triangle = place.bind(scenes.triangle)
-	},
 	
-	move = {
-		push = move.bind(1),
-		pull = move.bind(-1),
-		drag = func(): printerr('Dragging is outdated please fix')
-	}
+	joint = preload("res://objects/joint/joint.tscn"),
 }
 
 
-var state: Callable = states.move.drag:
+var states: = {
+	place_circle = place.bind(scenes.circle),
+	place_square = place.bind(scenes.square),
+	place_triangle = place.bind(scenes.triangle),
+	
+	move_push = move.bind(1),
+	move_pull = move.bind(-1),
+	move_drag = func drag(): printerr('Dragging is outdated please fix'),
+	
+	joint_join = join,
+}
+
+
+var state: Callable = states.move_drag:
 	set(v): state = v; state_changed.emit()
 
 var push_radius: float = 180.0
@@ -39,14 +39,12 @@ var is_interact_pressed: bool = false
 
 func _physics_process(_delta: float) -> void:
 	state.call()
-	PhysicsJointDragger.enabled = state == states.move.drag
+	PhysicsJointDragger.enabled = state == states.move_drag
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action("interact"):
-		return
-	
-	is_interact_pressed = event.is_pressed()
+	if event.is_action("interact"):
+		is_interact_pressed = event.is_pressed()
 
 
 var place_timer_ref: WeakRef = weakref(null)
@@ -99,3 +97,22 @@ func move(modification: float) -> void:
 		var collider: RigidBody2D = collision_info.collider
 		
 		collider.apply_impulse(mouse_position.direction_to(collider.global_position) * (1 - ( mouse_position.distance_to(collider.global_position) / push_radius )) * push_impulse * modification)
+
+
+var drag
+
+func join() -> void:
+	var create_joint: Callable = func create_joint(node1: Node, node2: Node):
+		var obj: Joint2D = scenes.joint.instantiate()
+		obj.node_a = node1.get_path()
+		obj.node_b = node2.get_path()
+		node1.add_child(obj)
+	
+	
+	if Input.is_action_just_released("interact"):
+		var hover = Mouse.hover[0] if not Mouse.hover.is_empty() else null
+		
+		if is_instance_valid(drag) and is_instance_valid(hover):
+			create_joint.call(drag.object, hover.object)
+	
+	drag = Mouse.drag

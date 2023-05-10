@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mocd3xw0jm7v"]
+[gd_scene load_steps=12 format=3 uid="uid://mocd3xw0jm7v"]
 
 [ext_resource type="Texture2D" uid="uid://7a3x1twx0ncj" path="res://userinterfaces/help/help.svg" id="1_embch"]
 [ext_resource type="Script" path="res://userinterfaces/help/help.gd" id="1_v72qs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cr22wuwrvonm7" path="res://userinterfaces/game/move/push.svg" id="6_mxeu1"]
 [ext_resource type="Texture2D" uid="uid://u36ampe8mtde" path="res://userinterfaces/game/move/pull.svg" id="7_5qy21"]
 [ext_resource type="Texture2D" uid="uid://deiovy4nf2d54" path="res://userinterfaces/game/place/circle.svg" id="8_v4088"]
+[ext_resource type="Texture2D" uid="uid://ytay2q7tm7rl" path="res://userinterfaces/game/join/join.svg" id="8_vvgbq"]
 [ext_resource type="Texture2D" uid="uid://dpuvn61ny0t1l" path="res://userinterfaces/game/place/triangle.svg" id="9_818gp"]
 [ext_resource type="Texture2D" uid="uid://m8iftrsc2fg7" path="res://userinterfaces/game/place/square.svg" id="10_d4jil"]
 
@@ -23,7 +24,8 @@ script = ExtResource("1_v72qs")
 
 [node name="Popup" type="Popup" parent="."]
 title = "HELP"
-size = Vector2i(484, 363)
+size = Vector2i(687, 443)
+visible = true
 borderless = false
 
 [node name="Tutorial" type="VBoxContainer" parent="Popup"]
@@ -123,5 +125,16 @@ texture = ExtResource("10_d4jil")
 [node name="Label" type="Label" parent="Popup/Tutorial/Actions/Place/Square"]
 layout_mode = 2
 text = "Place Square"
+
+[node name="Join" type="HBoxContainer" parent="Popup/Tutorial"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popup/Tutorial/Join"]
+layout_mode = 2
+texture = ExtResource("8_vvgbq")
+
+[node name="Label" type="Label" parent="Popup/Tutorial/Join"]
+layout_mode = 2
+text = "Join two Objects Together"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
