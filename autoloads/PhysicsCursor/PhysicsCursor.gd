@@ -129,4 +129,5 @@ func delete() -> void:
 	if not is_instance_valid(Mouse.hover[0]):
 		return
 	
-	Mouse.hover[0].get_parent().queue_free()
+	var obj = Mouse.hover.pop_at(0)
+	obj.get_parent().queue_free()
