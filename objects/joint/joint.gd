@@ -11,6 +11,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if not is_instance_valid(node1) or not is_instance_valid(node2):
+		queue_free()
+	
 	queue_redraw()
 
 

@@ -22,6 +22,7 @@ var states: = {
 	move_drag = func drag(): printerr('Dragging is outdated please fix'),
 	
 	joint_join = join,
+	delete = delete
 }
 
 
@@ -116,3 +117,16 @@ func join() -> void:
 			create_joint.call(drag.object, hover.object)
 	
 	drag = Mouse.drag
+
+
+func delete() -> void:
+	if not is_interact_pressed:
+		return
+	
+	if Mouse.hover.is_empty():
+		return
+	
+	if not is_instance_valid(Mouse.hover[0]):
+		return
+	
+	Mouse.hover[0].get_parent().queue_free()

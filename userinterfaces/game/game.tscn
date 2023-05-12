@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgveqgadu0bl3"]
+[gd_scene load_steps=19 format=3 uid="uid://cgveqgadu0bl3"]
 
 [ext_resource type="PackedScene" uid="uid://mocd3xw0jm7v" path="res://userinterfaces/help/help.tscn" id="2_6cuce"]
 [ext_resource type="Script" path="res://classes/PhysicsCursorStateButton.gd" id="2_26esm"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://gbv7hs1x2wqu" path="res://userinterfaces/game/move/pull_selected.svg" id="13_pcvtq"]
 [ext_resource type="Texture2D" uid="uid://cyjf5rqhgi3nv" path="res://userinterfaces/game/join/join_selected.svg" id="15_l57rw"]
 [ext_resource type="Texture2D" uid="uid://ytay2q7tm7rl" path="res://userinterfaces/game/join/join.svg" id="16_go8dy"]
+[ext_resource type="Texture2D" uid="uid://drje8nyuu0eqk" path="res://userinterfaces/game/delete/delete_selected.svg" id="17_v1rqr"]
+[ext_resource type="Texture2D" uid="uid://bp1cbvmpyaxvq" path="res://userinterfaces/game/delete/delete.svg" id="18_tmgaf"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -113,3 +115,12 @@ script = ExtResource("2_26esm")
 state = "joint_join"
 selected = ExtResource("15_l57rw")
 normal = ExtResource("16_go8dy")
+
+[node name="Delete" type="TextureButton" parent="VBoxContainer/Joint"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_fra0x")
+script = ExtResource("2_26esm")
+state = "delete"
+selected = ExtResource("17_v1rqr")
+normal = ExtResource("18_tmgaf")
